@@ -1,3 +1,5 @@
+## 目錄結構
+
 /food-ordering-system
 │
 ├── /controllers           # 控制器：處理業務邏輯與路由的映射
@@ -27,5 +29,26 @@
 ├── go.mod                 # Go module 文件，管理依賴項
 └── main.go                # 主文件，啟動 Gin 框架和 Firebase
 
-如何Build 這個GO專案?
-先裝好Golang，然後接下來要配置環境變數，將GO_PATH配置到此專案資料夾位置，假設此檔案(Readme.md)在D:\ProgramFile\Go\src\orderfood，則GO_PATH就設定成D:\ProgramFile\Go
+## 如何構建與運行專案
+
+### 1. 安裝 Golang
+
+請先確保已安裝 Golang，可以從 [Golang 官網](https://golang.org/dl/) 下載並安裝最新版本。
+
+### 2. 設置環境變數
+
+你需要設置 `GOPATH` 來指向 Go 工作空間。如果你的專案位於 `D:\ProgramFile\Go\src\orderfood`，你需要將 `GOPATH` 設置為 `D:\ProgramFile\Go`。
+
+#### Windows 上設置環境變數的步驟：
+
+1. 右鍵 "此電腦"，選擇 "屬性"。
+2. 點擊 "進階系統設定"，然後選擇 "環境變數"。
+3. 在 "使用者環境變數" 下，新增或編輯 `GOPATH` 變數，設置其值為 `D:\ProgramFile\Go`。
+4. 點擊 "確定" 並重新啟動命令行窗口。
+
+### 3. 下載專案依賴項
+
+專案使用 Go Modules 來管理依賴庫，因此你需要下載專案的所有依賴。首先，進入專案的根目錄，然後運行以下命令：
+
+```bash
+go mod download
