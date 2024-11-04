@@ -1,0 +1,735 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/food/addMenu": {
+            "post": {
+                "tags": [
+                    "menu module"
+                ],
+                "summary": "新增/修改菜單",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Food ID",
+                        "name": "id",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/index": {
+            "get": {
+                "tags": [
+                    "首頁"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu/deleteFood": {
+            "delete": {
+                "tags": [
+                    "menu module"
+                ],
+                "summary": "刪除食物",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "食物名稱",
+                        "name": "food_name",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/order/addOrder": {
+            "post": {
+                "tags": [
+                    "order module"
+                ],
+                "summary": "新增訂單",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "訂單列表",
+                        "name": "order_list",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/order/endOrder": {
+            "post": {
+                "tags": [
+                    "order module"
+                ],
+                "summary": "結束訂單",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "訂單ID",
+                        "name": "order_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/order/getOrder": {
+            "get": {
+                "tags": [
+                    "order module"
+                ],
+                "summary": "取得訂單",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "token",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\", \"data []Order\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/rate/addRate": {
+            "post": {
+                "tags": [
+                    "rates module"
+                ],
+                "summary": "評價添加/修改",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "評分",
+                        "name": "rate",
+                        "in": "body",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "description": "評論",
+                        "name": "comment",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/rate/deleteRate": {
+            "delete": {
+                "tags": [
+                    "rates module"
+                ],
+                "summary": "刪除評價",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "評價ID",
+                        "name": "rate_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/addFavoriteRestaurant": {
+            "post": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "新增最愛餐廳",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/addRestaurant": {
+            "post": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "新增餐廳",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳名稱",
+                        "name": "name",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "營業時間",
+                        "name": "business_hours",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "地址",
+                        "name": "address",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "電話",
+                        "name": "phone",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/deleteRestaurant": {
+            "delete": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "刪除餐廳",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/findFavoriteRestaurantList": {
+            "get": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "查詢最愛餐廳列表",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\", \"data []Restaurant\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/findRestaurantByID": {
+            "get": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "透過ID查詢餐廳",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "餐廳ID",
+                        "name": "id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\", \"data Restaurant\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/findRestaurantList": {
+            "get": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "查詢餐廳列表",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "餐廳名稱",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\", \"data []Restaurant\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/findRestaurantRating": {
+            "get": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "查詢餐廳評分",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "餐廳ID",
+                        "name": "id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\", \"data float64\", \"data rate\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/removeFavoriteRestaurant": {
+            "delete": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "刪除最愛餐廳",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurant/updateRestaurantInfomation": {
+            "post": {
+                "tags": [
+                    "restaurant module"
+                ],
+                "summary": "修改餐廳資訊",
+                "parameters": [
+                    {
+                        "description": "token",
+                        "name": "token",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳ID",
+                        "name": "restaurant_id",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "餐廳名稱",
+                        "name": "name",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "營業時間",
+                        "name": "business_hours",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "地址",
+                        "name": "address",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "電話",
+                        "name": "phone",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/forget": {
+            "post": {
+                "tags": [
+                    "user module"
+                ],
+                "summary": "忘記密碼",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "email信箱",
+                        "name": "email",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "user module"
+                ],
+                "summary": "登入帳號",
+                "parameters": [
+                    {
+                        "description": "email信箱",
+                        "name": "name",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "密碼",
+                        "name": "password",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\", \"token\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/register": {
+            "post": {
+                "tags": [
+                    "user module"
+                ],
+                "summary": "註冊新用戶",
+                "parameters": [
+                    {
+                        "description": "email信箱",
+                        "name": "name",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "密碼",
+                        "name": "password",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/verify": {
+            "post": {
+                "tags": [
+                    "user module"
+                ],
+                "summary": "驗證帳號",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "token",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code\", \"message\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
