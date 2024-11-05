@@ -4,6 +4,7 @@ import (
 	"orderfood/controller"
 	_ "orderfood/docs"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -16,6 +17,15 @@ import (
 // SetupRouter sets up the routes for the application
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
+
+	// 設定 cors
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	config.AllowMethods = []string{"GET", "POST", "DELETE", "OPTIONS", "PUT"}
+	config.AllowHeaders = []string{"Authorization", "Content-Type", "Upgrade", "Origin",
+		"Connection", "Accept-Encoding", "Accept-Language", "Host", "Access-Control-Request-Method", "Access-Control-Request-Headers"}
+
+	router.Use(cors.New(config))
 
 	router.LoadHTMLGlob("views/**/*")
 	router.GET("/", controller.GetIndex)
