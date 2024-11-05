@@ -399,15 +399,13 @@ paths:
     post:
       parameters:
       - description: email信箱
-        in: body
-        name: name
-        schema:
-          type: string
+        in: formData
+        name: email
+        type: string
       - description: 密碼
-        in: body
+        in: formData
         name: password
-        schema:
-          type: string
+        type: string
       responses:
         "200":
           description: code", "message", "token"}
@@ -421,7 +419,7 @@ paths:
       parameters:
       - description: email信箱
         in: body
-        name: name
+        name: email
         schema:
           type: string
       - description: 密碼

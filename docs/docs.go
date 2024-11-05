@@ -659,20 +659,16 @@ const docTemplate = `{
                 "summary": "登入帳號",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "email信箱",
-                        "name": "name",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "name": "email",
+                        "in": "formData"
                     },
                     {
+                        "type": "string",
                         "description": "密碼",
                         "name": "password",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "formData"
                     }
                 ],
                 "responses": {
@@ -694,7 +690,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "description": "email信箱",
-                        "name": "name",
+                        "name": "email",
                         "in": "body",
                         "schema": {
                             "type": "string"

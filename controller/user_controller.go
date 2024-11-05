@@ -15,8 +15,8 @@ import (
 // Reigsiter
 // @Summary 註冊新用戶
 // @Tags user module
-// @param email body string false "email信箱"
-// @param password body string false "密碼"
+// @param email formData string false "email信箱"
+// @param password formData string false "密碼"
 // @Success 200 {string} json{"code", "message"}
 // @Router /user/register [post]
 func Register(c *gin.Context) {
@@ -58,8 +58,8 @@ func Register(c *gin.Context) {
 // Login
 // @Summary 登入帳號
 // @Tags user module
-// @param email body string false "email信箱"
-// @param password body string false "密碼"
+// @param email formData string false "email信箱"
+// @param password formData string false "密碼"
 // @Success 200 {string} json{"code", "message", "token"}
 // @Router /user/login [post]
 func Login(c *gin.Context) {
@@ -67,10 +67,11 @@ func Login(c *gin.Context) {
 	email := c.PostForm("email")
 	password := c.PostForm("password")
 
+	println("email: ", email)
+	println("password: ", password)
+
 	// TODO: some validation
 	if email == "" || password == "" {
-		println("email: ", email)
-		println("password: ", password)
 		response.Fail(c, nil, "請輸入完整資料")
 		return
 	}
@@ -81,6 +82,11 @@ func Login(c *gin.Context) {
 	if err != nil {
 		response.Fail(c, nil, "查詢用戶失敗")
 		return
+	}
+
+	// 檢查用戶是否存在
+	if user == nil || !user.Exists() {
+		response.Fail(c, nil, "用戶不存在")
 	}
 
 	// 使用 User 結構體讀取文件數據
