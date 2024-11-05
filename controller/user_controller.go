@@ -15,7 +15,7 @@ import (
 // Reigsiter
 // @Summary 註冊新用戶
 // @Tags user module
-// @param name body string false "email信箱"
+// @param email body string false "email信箱"
 // @param password body string false "密碼"
 // @Success 200 {string} json{"code", "message"}
 // @Router /user/register [post]
@@ -58,7 +58,7 @@ func Register(c *gin.Context) {
 // Login
 // @Summary 登入帳號
 // @Tags user module
-// @param name body string false "email信箱"
+// @param email body string false "email信箱"
 // @param password body string false "密碼"
 // @Success 200 {string} json{"code", "message", "token"}
 // @Router /user/login [post]
@@ -69,6 +69,8 @@ func Login(c *gin.Context) {
 
 	// TODO: some validation
 	if email == "" || password == "" {
+		println("email: ", email)
+		println("password: ", password)
 		response.Fail(c, nil, "請輸入完整資料")
 		return
 	}
