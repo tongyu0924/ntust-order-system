@@ -3,6 +3,7 @@ package router
 import (
 	"orderfood/controller"
 	_ "orderfood/docs"
+	"orderfood/middleware"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -36,6 +37,7 @@ func SetupRouter() *gin.Engine {
 	router.POST("/user/login", controller.Login)
 	router.POST("/user/verify", controller.VerifyAccount)
 	router.POST("/user/forget", controller.ForgetPassword)
+	router.GET("/user/info", middleware.AuthMiddleware(), controller.Info)
 
 	// Menu
 	router.DELETE("/menu/deleteFood", controller.DeleteFood)

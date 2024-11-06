@@ -29,3 +29,13 @@ func GenerateToken(userID string) (string, error) {
 
 	return tokenString, err
 }
+
+func ParseToken(tokenString string) (*jwt.Token, *Claims, error) {
+	Claims := &Claims{}
+
+	token, err := jwt.ParseWithClaims(tokenString, Claims, func(token *jwt.Token) (interface{}, error) {
+		return jwtKey, nil
+	})
+
+	return token, Claims, err
+}

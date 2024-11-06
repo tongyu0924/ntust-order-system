@@ -46,3 +46,12 @@ func FindUserByEmail(email string) (*firestore.DocumentSnapshot, error) {
 
 	return nil, nil
 }
+
+func FindUserByID(userID string) (*firestore.DocumentSnapshot, error) {
+	doc, err := FirestoreClient.Collection("users").Doc(userID).Get(context.Background())
+	if err != nil {
+		return nil, err
+	}
+
+	return doc, nil
+}

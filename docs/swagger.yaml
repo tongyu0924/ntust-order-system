@@ -1,26 +1,3 @@
-definitions:
-  models.UserBasic:
-    properties:
-      email:
-        type: string
-      id:
-        description: 主鍵
-        type: string
-      is_disabled:
-        type: boolean
-      name:
-        type: string
-      password:
-        type: string
-      phone:
-        type: string
-      restaurant_id:
-        type: string
-      roles:
-        type: string
-      verification_token:
-        type: string
-    type: object
 info:
   contact: {}
 paths:
@@ -418,6 +395,16 @@ paths:
       summary: 忘記密碼
       tags:
       - user module
+  /user/info:
+    get:
+      responses:
+        "200":
+          description: code", "message", "user"}
+          schema:
+            type: string
+      summary: 獲取用戶信息
+      tags:
+      - user module
   /user/login:
     post:
       parameters:
@@ -425,13 +412,45 @@ paths:
         in: body
         name: user
         schema:
-          $ref: '#/definitions/models.UserBasic'
+          properties:
+            ' password':
+              type: string
+            email:
+              type: string
+          type: object
       responses:
         "200":
           description: code", "message", "token"}
           schema:
             type: string
       summary: 登入帳號
+      tags:
+      - user module
+  /user/register:
+    post:
+      parameters:
+      - description: 用戶登入資料
+        in: body
+        name: user
+        schema:
+          properties:
+            ' name':
+              type: string
+            ' password':
+              type: string
+            ' phone':
+              type: string
+            ' roles':
+              type: string
+            email:
+              type: string
+          type: object
+      responses:
+        "200":
+          description: code", "message"}
+          schema:
+            type: string
+      summary: 註冊新用戶
       tags:
       - user module
   /user/verify:

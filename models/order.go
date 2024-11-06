@@ -1,7 +1,7 @@
 package models
 
 type Order struct {
-	Id           string         `firestore:"id"`
+	ID           string         `firestore:"id"` // 主鍵
 	RestaurantId string         `firestore:"restaurant_id"`
 	UserId       string         `firestore:"user_id"`
 	OrderItems   map[string]int `firestore:"order_items"`

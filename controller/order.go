@@ -5,9 +5,8 @@ import "github.com/gin-gonic/gin"
 // AddOrder
 // @Summary 新增訂單
 // @Tags order module
-// @param token body string false "token"
-// @param restaurant_id body string false "餐廳ID"
-// @param order_list body map[string]int false "訂單列表"
+// @Authentication BearerToken
+// @param object{restaurant_id=string,order_list=map[string]int} body false "訂單資料"
 // @Success 200 {string} json{"code", "message"}
 // @Router /order/addOrder [post]
 func AddOrder(c *gin.Context) {
@@ -16,8 +15,8 @@ func AddOrder(c *gin.Context) {
 // EndOrder
 // @Summary 結束訂單
 // @Tags order module
-// @param token body string false "token"
-// @param order_id body string false "訂單ID"
+// @Authentication BearerToken
+// @param object{order_id=string} body false "訂單ID"
 // @Success 200 {string} json{"code", "message"}
 // @Router /order/endOrder [post]
 func EndOrder(c *gin.Context) {
@@ -26,9 +25,10 @@ func EndOrder(c *gin.Context) {
 // GetOrder
 // @Summary 取得訂單
 // @Tags order module
-// @param token query string false "token"
+// @Authentication BearerToken
 // @Success 200 {string} json{"code", "message", "data []Order"}
 // @Router /order/getOrder [get]
 func GetOrderList(c *gin.Context) {
-
+	// 如果角色是商家，則返回該商家的訂單
+	// 如果角色是用戶，則返回該用戶的訂單
 }

@@ -15,10 +15,9 @@ import (
 // Reigsiter
 // @Summary 註冊新用戶
 // @Tags user module
-// @param user body models.UserBasic false "用戶登入資料"
+// @param user body object{email=string,password=string,name=string,phone=string,roles=string} false "用戶登入資料"
 // @Success 200 {string} json{"code", "message"}
 // @Router /user/register [post]
-
 func Register(c *gin.Context) {
 	// 使用 c.BindJSON 來從請求中解碼 JSON 到 UserBasic 結構體
 	var userInput models.UserBasic
@@ -30,6 +29,18 @@ func Register(c *gin.Context) {
 	// 驗證是否有缺失的字段
 	if userInput.Email == "" || userInput.Password == "" || userInput.Name == "" || userInput.Phone == "" || userInput.Roles == "" {
 		response.Fail(c, nil, "請輸入完整資料")
+		return
+	}
+
+	// 檢查用戶是否已經存在
+	user, err := utils.FindUserByEmail(userInput.Email)
+	if err != nil {
+		response.Fail(c, nil, "查詢用戶失敗")
+		return
+	}
+
+	if user != nil && user.Exists() {
+		response.Fail(c, nil, "用戶已存在")
 		return
 	}
 
@@ -59,7 +70,7 @@ func Register(c *gin.Context) {
 // Login
 // @Summary 登入帳號
 // @Tags user module
-// @param user body models.UserBasic false "用戶登入資料"
+// @param user body object{email=string,password=string} false "用戶登入資料"
 // @Success 200 {string} json{"code", "message", "token"}
 // @Router /user/login [post]
 func Login(c *gin.Context) {
@@ -108,8 +119,12 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	// 模擬 token 生成
-	token := "11"
+	// 發放token
+	token, err := utils.GenerateToken(userBasic.ID)
+	if err != nil {
+		response.Fail(c, nil, "token發放失敗")
+		return
+	}
 
 	response.Success(c, gin.H{
 		"token": token,
@@ -132,4 +147,19 @@ func VerifyAccount(c *gin.Context) {
 // @Success 200 {string} json{"code", "message"}
 // @Router /user/forget [post]
 func ForgetPassword(c *gin.Context) {
+}
+
+// Info
+// @Summary 獲取用戶信息
+// @Tags user module
+// @Authentication BearerToken
+// @Success 200 {string} json{"code", "message", "user"}
+// @Router /user/info [get]
+func Info(c *gin.Context) {
+	// 從上下文中獲取用戶信息(以從token中解析出來的用戶信息)
+	user, _ := c.Get("user")
+
+	response.Success(c, gin.H{
+		"user": user,
+	}, "成功")
 }
