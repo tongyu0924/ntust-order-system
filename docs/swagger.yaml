@@ -1,3 +1,26 @@
+definitions:
+  models.UserBasic:
+    properties:
+      email:
+        type: string
+      id:
+        description: 主鍵
+        type: string
+      is_disabled:
+        type: boolean
+      name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      restaurant_id:
+        type: string
+      roles:
+        type: string
+      verification_token:
+        type: string
+    type: object
 info:
   contact: {}
 paths:
@@ -398,41 +421,17 @@ paths:
   /user/login:
     post:
       parameters:
-      - description: email信箱
-        in: formData
-        name: email
-        type: string
-      - description: 密碼
-        in: formData
-        name: password
-        type: string
+      - description: 用戶登入資料
+        in: body
+        name: user
+        schema:
+          $ref: '#/definitions/models.UserBasic'
       responses:
         "200":
           description: code", "message", "token"}
           schema:
             type: string
       summary: 登入帳號
-      tags:
-      - user module
-  /user/register:
-    post:
-      parameters:
-      - description: email信箱
-        in: body
-        name: email
-        schema:
-          type: string
-      - description: 密碼
-        in: body
-        name: password
-        schema:
-          type: string
-      responses:
-        "200":
-          description: code", "message"}
-          schema:
-            type: string
-      summary: 註冊新用戶
       tags:
       - user module
   /user/verify:

@@ -647,55 +647,17 @@
                 "summary": "登入帳號",
                 "parameters": [
                     {
-                        "type": "string",
-                        "description": "email信箱",
-                        "name": "email",
-                        "in": "formData"
-                    },
-                    {
-                        "type": "string",
-                        "description": "密碼",
-                        "name": "password",
-                        "in": "formData"
+                        "description": "用戶登入資料",
+                        "name": "user",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserBasic"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "code\", \"message\", \"token\"}",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/user/register": {
-            "post": {
-                "tags": [
-                    "user module"
-                ],
-                "summary": "註冊新用戶",
-                "parameters": [
-                    {
-                        "description": "email信箱",
-                        "name": "email",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "密碼",
-                        "name": "password",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "code\", \"message\"}",
                         "schema": {
                             "type": "string"
                         }
@@ -724,6 +686,41 @@
                             "type": "string"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.UserBasic": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主鍵",
+                    "type": "string"
+                },
+                "is_disabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "restaurant_id": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "string"
+                },
+                "verification_token": {
+                    "type": "string"
                 }
             }
         }
