@@ -6,7 +6,7 @@ import "github.com/gin-gonic/gin"
 // @Summary 新增訂單
 // @Tags order module
 // @Authentication BearerToken
-// @param object{restaurant_id=string,order_list=map[string]int} body false "訂單資料"
+// @Param order body object{restaurant_id=string,order_list=map[string]int} false "訂單資料"
 // @Success 200 {string} json{"code", "message"}
 // @Router /order/addOrder [post]
 func AddOrder(c *gin.Context) {
@@ -16,7 +16,7 @@ func AddOrder(c *gin.Context) {
 // @Summary 結束訂單
 // @Tags order module
 // @Authentication BearerToken
-// @param object{order_id=string} body false "訂單ID"
+// @Param order body object{order_id=string} false "訂單ID"
 // @Success 200 {string} json{"code", "message"}
 // @Router /order/endOrder [post]
 func EndOrder(c *gin.Context) {

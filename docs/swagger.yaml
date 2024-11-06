@@ -61,22 +61,17 @@ paths:
   /order/addOrder:
     post:
       parameters:
-      - description: token
+      - description: 訂單資料
         in: body
-        name: token
+        name: order
         schema:
-          type: string
-      - description: 餐廳ID
-        in: body
-        name: restaurant_id
-        schema:
-          type: string
-      - description: 訂單列表
-        in: body
-        name: order_list
-        schema:
-          additionalProperties:
-            type: integer
+          properties:
+            order_list:
+              additionalProperties:
+                type: integer
+              type: object
+            restaurant_id:
+              type: string
           type: object
       responses:
         "200":
@@ -89,16 +84,14 @@ paths:
   /order/endOrder:
     post:
       parameters:
-      - description: token
-        in: body
-        name: token
-        schema:
-          type: string
       - description: 訂單ID
         in: body
-        name: order_id
+        name: order
         schema:
-          type: string
+          properties:
+            order_id:
+              type: string
+          type: object
       responses:
         "200":
           description: code", "message"}
@@ -109,11 +102,6 @@ paths:
       - order module
   /order/getOrder:
     get:
-      parameters:
-      - description: token
-        in: query
-        name: token
-        type: string
       responses:
         "200":
           description: code", "message", "data []Order"}
@@ -125,26 +113,21 @@ paths:
   /rate/addRate:
     post:
       parameters:
-      - description: token
-        in: body
-        name: token
-        schema:
-          type: string
-      - description: 餐廳ID
-        in: body
-        name: restaurant_id
-        schema:
-          type: string
-      - description: 評分
+      - description: 評價資料
         in: body
         name: rate
+        required: true
         schema:
-          type: number
-      - description: 評論
-        in: body
-        name: comment
-        schema:
-          type: string
+          properties:
+            comment:
+              type: string
+            rate:
+              type: number
+            restaurant_id:
+              type: string
+            token:
+              type: string
+          type: object
       responses:
         "200":
           description: code", "message"}
@@ -156,16 +139,15 @@ paths:
   /rate/deleteRate:
     delete:
       parameters:
-      - description: token
-        in: body
-        name: token
-        schema:
-          type: string
       - description: 評價ID
         in: body
-        name: rate_id
+        name: rate
+        required: true
         schema:
-          type: string
+          properties:
+            rate_id:
+              type: string
+          type: object
       responses:
         "200":
           description: code", "message"}
@@ -413,9 +395,9 @@ paths:
         name: user
         schema:
           properties:
-            ' password':
-              type: string
             email:
+              type: string
+            password:
               type: string
           type: object
       responses:
@@ -434,15 +416,15 @@ paths:
         name: user
         schema:
           properties:
-            ' name':
-              type: string
-            ' password':
-              type: string
-            ' phone':
-              type: string
-            ' roles':
-              type: string
             email:
+              type: string
+            name:
+              type: string
+            password:
+              type: string
+            phone:
+              type: string
+            roles:
               type: string
           type: object
       responses:

@@ -116,29 +116,21 @@ const docTemplate = `{
                 "summary": "新增訂單",
                 "parameters": [
                     {
-                        "description": "token",
-                        "name": "token",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "餐廳ID",
-                        "name": "restaurant_id",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "訂單列表",
-                        "name": "order_list",
+                        "description": "訂單資料",
+                        "name": "order",
                         "in": "body",
                         "schema": {
                             "type": "object",
-                            "additionalProperties": {
-                                "type": "integer"
+                            "properties": {
+                                "order_list": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "restaurant_id": {
+                                    "type": "string"
+                                }
                             }
                         }
                     }
@@ -161,19 +153,16 @@ const docTemplate = `{
                 "summary": "結束訂單",
                 "parameters": [
                     {
-                        "description": "token",
-                        "name": "token",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
                         "description": "訂單ID",
-                        "name": "order_id",
+                        "name": "order",
                         "in": "body",
                         "schema": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                                "order_id": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 ],
@@ -193,14 +182,6 @@ const docTemplate = `{
                     "order module"
                 ],
                 "summary": "取得訂單",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "token",
-                        "name": "token",
-                        "in": "query"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "code\", \"message\", \"data []Order\"}",
@@ -219,35 +200,26 @@ const docTemplate = `{
                 "summary": "評價添加/修改",
                 "parameters": [
                     {
-                        "description": "token",
-                        "name": "token",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "餐廳ID",
-                        "name": "restaurant_id",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "評分",
+                        "description": "評價資料",
                         "name": "rate",
                         "in": "body",
+                        "required": true,
                         "schema": {
-                            "type": "number"
-                        }
-                    },
-                    {
-                        "description": "評論",
-                        "name": "comment",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                                "comment": {
+                                    "type": "string"
+                                },
+                                "rate": {
+                                    "type": "number"
+                                },
+                                "restaurant_id": {
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 ],
@@ -269,19 +241,17 @@ const docTemplate = `{
                 "summary": "刪除評價",
                 "parameters": [
                     {
-                        "description": "token",
-                        "name": "token",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
                         "description": "評價ID",
-                        "name": "rate_id",
+                        "name": "rate",
                         "in": "body",
+                        "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                                "rate_id": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 ],
@@ -681,10 +651,10 @@ const docTemplate = `{
                         "schema": {
                             "type": "object",
                             "properties": {
-                                " password": {
+                                "email": {
                                     "type": "string"
                                 },
-                                "email": {
+                                "password": {
                                     "type": "string"
                                 }
                             }
@@ -715,19 +685,19 @@ const docTemplate = `{
                         "schema": {
                             "type": "object",
                             "properties": {
-                                " name": {
-                                    "type": "string"
-                                },
-                                " password": {
-                                    "type": "string"
-                                },
-                                " phone": {
-                                    "type": "string"
-                                },
-                                " roles": {
-                                    "type": "string"
-                                },
                                 "email": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "phone": {
+                                    "type": "string"
+                                },
+                                "roles": {
                                     "type": "string"
                                 }
                             }
