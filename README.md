@@ -1,5 +1,5 @@
 ## 目錄結構
-
+```
 /food-ordering-system
 
 ├── /controller  # 控制器：處理業務邏輯與路由的映射  
@@ -28,7 +28,7 @@
 │  
 ├── go.mod  # Go module 文件，管理依賴項  
 └── main.go  # 主文件，啟動 Gin 框架和 Firebase
-
+```
 
 ## 如何構建與運行專案
 
