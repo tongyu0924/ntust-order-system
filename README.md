@@ -56,14 +56,14 @@ go mod download
 ```
 
 ## 執行畫面展示（Screenshots）
-### 主畫面
+### 主畫面 & 搜尋畫面
 ![主畫面](screenshots/01.png)
 
-### 搜尋畫面
-![搜尋畫面](screenshots/02.png)
+### 登入畫面 & 註冊畫面
+![登入畫面](screenshots/02.png)
 
-### 登入畫面
-![登入畫面](screenshots/03.png)
+### 訂單相關畫面
+![訂單相關畫面](screenshots/03.png)
 
-### 註冊畫面
-![註冊畫面](screenshots/04.png)
+### 餐廳資訊畫面
+![餐廳資訊畫面](screenshots/04.png)
