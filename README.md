@@ -69,7 +69,7 @@ go mod download
 ![餐廳資訊畫面](screenshots/04.png)
 
 ## 專案報告
-- [📄 report.pdf](report.pdf)
+- [report.pdf](report.pdf)
 
 ## 我的貢獻
 本專案為團隊合作開發，我主要負責後端功能，包括使用者登入註冊、送出訂單、餐廳評價與 API 測試等模組。
