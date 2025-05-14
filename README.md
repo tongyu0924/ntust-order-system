@@ -55,7 +55,7 @@
 go mod download
 ```
 
-## 執行畫面展示（Screenshots）
+## 執行畫面展示
 ### 主畫面 & 搜尋畫面
 ![主畫面](screenshots/01.png)
 
