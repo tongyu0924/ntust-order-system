@@ -1,3 +1,9 @@
+# Food Ordering System
+
+> This project was collaboratively developed by a team of students from  
+> **National Taiwan University of Science and Technology (NTUST)** – CSIE Department,  
+> as part of the **Software Engineering** course project.
+
 ## 目錄結構
 ```
 /food-ordering-system
