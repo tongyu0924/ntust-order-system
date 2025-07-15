@@ -8,39 +8,40 @@
 ```
 /food-ordering-system
 
-├── /controller  # 控制器：處理業務邏輯與路由的映射  
-│    ├── user.go            # 用戶相關的業務邏輯  
-│    └── restaurant.go      # 餐廳管理相關的業務邏輯  
-│    └── rates.go           # 餐廳評價相關的業務邏輯  
-│    └── order.go           # 訂餐相關的業務邏輯  
-│    └── menu.go            # 管理菜單的業務邏輯  
-│  
-├── /models  # 模型：資料結構和 Firebase 交互定義  
-│    ├── order.go       # 點餐的數據模型  
-│    └── food.go        # 食物數據模型  
-│    └── menu.go        # 菜單的數據模型  
-│    └── rate.go        # 評價的數據模型  
-│    └── restaurant.go  # 餐廳的數據模型  
-│    └── user_basic.go  # 使用者的數據模型  
-│  
-├── /router  # 路由：定義 HTTP 路徑與控制器的映射  
-│    └── router.go  # 所有路由的統一管理  
-│  
-├── /utils  # 公用工具：放置一些工具函數或通用邏輯  
-│    └── firebase.go  # 建立firebase資料庫
-│    └── jwt.go       # token處理  
-│  
-├── /config  # 配置：存放專案相關的配置文件  
-│  
-├── go.mod  # Go module 文件，管理依賴項  
-└── main.go  # 主文件，啟動 Gin 框架和 Firebase
+├── /controller        # Handles business logic and route handling
+│    ├── user.go           # User-related operations
+│    ├── restaurant.go     # Restaurant management
+│    ├── rates.go          # Restaurant rating system
+│    ├── order.go          # Order placement and tracking
+│    └── menu.go           # Menu management
+│
+├── /models           # Data models and Firebase integration
+│    ├── order.go          # Order data model
+│    ├── food.go           # Food item data model
+│    ├── menu.go           # Menu data model
+│    ├── rate.go           # Rating data model
+│    ├── restaurant.go     # Restaurant data model
+│    └── user_basic.go     # User profile model
+│
+├── /router           # Route definitions and bindings
+│    └── router.go         # Centralized routing
+│
+├── /utils            # Utility functions and helpers
+│    ├── firebase.go       # Firebase initialization
+│    └── jwt.go            # JWT token handling
+│
+├── /config           # Configuration files
+│
+├── go.mod            # Go module dependency file
+└── main.go           # Main entry point (Gin + Firebase)
+
 ```
 
 ## 如何構建與運行專案
 
-### 1. 安裝 Golang
+### 1. Install Golang
 
-請先確保已安裝 Golang，可以從 [Golang 官網](https://golang.org/dl/) 下載並安裝最新版本。
+Make sure Go is installed on your system. You can download the latest version from the [official website](https://golang.org/dl/).
 
 ### 2. 設置環境變數
 
