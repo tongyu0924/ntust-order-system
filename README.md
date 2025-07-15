@@ -4,7 +4,7 @@
 > **National Taiwan University of Science and Technology (NTUST)** – CSIE Department,  
 > as part of the **Software Engineering** course project.
 
-## 目錄結構
+## Project Structure
 ```
 /food-ordering-system
 
@@ -37,45 +37,52 @@
 
 ```
 
-## 如何構建與運行專案
+## Getting Started
 
 ### 1. Install Golang
 
 Make sure Go is installed on your system. You can download the latest version from the [official website](https://golang.org/dl/).
 
-### 2. 設置環境變數
+### 2. Set Up Environment Variables
 
-你需要設置 `GOPATH` 來指向 Go 工作空間。如果你的專案位於 `D:\ProgramFile\Go\src\orderfood`，你需要將 `GOPATH` 設置為 `D:\ProgramFile\Go`。
+You need to set the `GOPATH` to point to your Go workspace.
+For example, if your project is located at `D:\ProgramFile\Go\src\orderfood`, then `GOPATH` should be set to:
+```bash
+D:\ProgramFile\Go
+```
 
-#### Windows 上設置環境變數的步驟：
+#### Steps to set environment variables on Windows:
 
-1. 右鍵 "此電腦"，選擇 "屬性"。
-2. 點擊 "進階系統設定"，然後選擇 "環境變數"。
-3. 在 "使用者環境變數" 下，新增或編輯 `GOPATH` 變數，設置其值為 `D:\ProgramFile\Go`。
-4. 點擊 "確定" 並重新啟動命令行窗口。
+1. Right-click on This PC and select Properties
+2. Click Advanced system settings, then choose Environment Variables
+3. Under User variables, add or edit the variable named `GOPATH`, and set its value to `D:\ProgramFile\Go`
+4. Click OK, and restart your command line window to apply the changes
 
-### 3. 下載專案依賴項
 
-專案使用 Go Modules 來管理依賴庫，因此你需要下載專案的所有依賴。首先，進入專案的根目錄，然後運行以下命令：
+
+### 3. Download Project Dependencies
+
+This project uses Go Modules for dependency management.
+Navigate to the project root and run the following command to download all required packages:
 
 ```bash
 go mod download
 ```
 
-## 執行畫面展示
-### 主畫面 & 搜尋畫面
+## UI Previews
+### Home & Search Page
 ![主畫面](screenshots/01.png)
 
-### 登入畫面 & 註冊畫面
+### Login & Registration
 ![登入畫面](screenshots/02.png)
 
-### 訂單相關畫面
+### Order Management
 ![訂單相關畫面](screenshots/03.png)
 
-### 餐廳資訊畫面
+### Restaurant Details
 ![餐廳資訊畫面](screenshots/04.png)
 
-## 專案報告
+## Project Report
 - [report.pdf](report.pdf)
 <!--
 ## 我的貢獻
